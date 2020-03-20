@@ -4214,10 +4214,10 @@ vue@^3.0.0-alpha.8:
     "@vue/runtime-dom" "3.0.0-alpha.9"
     "@vue/shared" "3.0.0-alpha.9"
 
-vugel@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.0-alpha.3.tgz#3a5f50f9a0e5b555d24e32d86d905e9607fd75e9"
-  integrity sha512-Vs2h/hyxee4Av7ghd7rtulsSSPx7hWiEoJuSjinjlbOjPuWEBn30g9+2zpl/WAxL7pxtsJXqq1nf4tQNIcATTw==
+vugel@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.0-alpha.4.tgz#45a75e39e4ca44755f30960619b27fc3eb58dfeb"
+  integrity sha512-p7jM+17pZCyKctaSW5Z3ar+d0cU4xl00IH0mINQIVi4md37UhtUtPrKmihEJo1xlRL8d+XCVGfV75qnM2MhwFg==
   dependencies:
     tree2d "^1.0.0-alpha.5"
 
