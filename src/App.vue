@@ -7,6 +7,8 @@
 <script>
 import { ref } from 'vue'
 
+import Vugel from 'vugel';
+
 export default {
   setup() {
     const count = ref(0)
