@@ -1,34 +1,28 @@
 <template>
-  <img src="./logo.png">
-  <h1>Hello Vue 3!</h1>
-  <button @click="inc">Clicked {{ count }} times.</button>
+  <h1>Hello Vugel!</h1>
+  <vugel :settings="{w: 900, h: 900}" v-on:click="click">
+    <comp :prop="scale" />
+  </vugel>
 </template>
 
 <script>
-import { ref } from 'vue'
 
-import Vugel from 'vugel';
 
-export default {
-  setup() {
-    const count = ref(0)
-    const inc = () => {
-      count.value++
-    }
+  import {Vugel} from "vugel"
 
-    return {
-      count,
-      inc
+  import Comp from "./Comp.vue"
+
+  import { ref } from 'vue'
+
+  export default {
+    components: {Vugel, Comp},
+    setup(props) {
+      const scale = ref(0.2);
+      const click = function() {
+        scale.value += 0.1;
+      }
+      return {scale, click}
     }
   }
-}
-</script>
 
-<style scoped>
-img {
-  width: 200px;
-}
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-}
-</style>
+</script>

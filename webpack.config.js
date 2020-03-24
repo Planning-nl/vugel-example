@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env = {}) => ({
   mode: env.prod ? 'production' : 'development',
-  devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: 'inline-source-map',
   entry: path.resolve(__dirname, './src/main.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -12,18 +12,23 @@ module.exports = (env = {}) => ({
   },
   resolve: {
     alias: {
-      // this isn't technically needed, since the default `vue` entry for bundlers
-      // is a simple `export * from '@vue/runtime-dom`. However having this
-      // extra re-export somehow causes webpack to always invalidate the module
-      // on the first HMR update and causes the page to reload.
-      'vue': '@vue/runtime-dom'
+      // See https://medium.com/@penx/managing-dependencies-in-a-node-package-so-that-they-are-compatible-with-npm-link-61befa5aaca7
+      vue: path.resolve('./node_modules/vue'),
+      '@vue': path.resolve('./node_modules/@vue'),
     }
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: 'vue-loader'
+        use: {
+          loader: 'vue-loader',
+          options: {
+            templateCompilers: {
+              vugel: {compiler: require('vugel'), compilerOptions: {}}
+            }
+          }
+        }
       },
       {
         test: /\.png$/,
@@ -52,7 +57,7 @@ module.exports = (env = {}) => ({
   ],
   devServer: {
     inline: true,
-    hot: true,
+    hot: false,
     stats: 'minimal',
     contentBase: __dirname,
     overlay: true
