@@ -5,6 +5,7 @@
     "build": "webpack --env.prod"
   },
   "dependencies": {
+    "source-map-loader": "^0.2.4",
     "vue": "^3.0.0-alpha.8"
   },
   "devDependencies": {
