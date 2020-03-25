@@ -1,11 +1,11 @@
 <template>
   <h1>Hello Vugel!</h1>
-  <vugel :settings="{w: 900, h: 900}" v-on:click="click">
+  <vugel style="position: absolute; width: 100%; height: 100%;" v-on:click="click">
     <comp :prop="scale" />
   </vugel>
 </template>
 
-<script>
+<script lang="ts">
 
 
   import {Vugel} from "vugel"
@@ -14,9 +14,10 @@
 
   import { ref } from 'vue'
 
+  const a : number = 1;
   export default {
     components: {Vugel, Comp},
-    setup(props) {
+    setup(props: any) {
       const scale = ref(0.2);
       const click = function() {
         scale.value += 0.1;
