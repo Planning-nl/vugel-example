@@ -1,6 +1,6 @@
 <template>
     <h1>Hello Vugel!</h1>
-    <vugel style="position: absolute; width: 100%; height: 100%;" @click="click">
+    <vugel style="position: absolute; width: 100%; height: 100%;">
         <comp :prop="scale" />
     </vugel>
 </template>
@@ -14,7 +14,7 @@ const a: number = 1;
 export default {
     components: { Vugel, Comp },
     setup(props: any) {
-        const scale = ref(0.2);
+        const scale = ref(1);
         const click = function () {
             scale.value += 0.1;
         };
