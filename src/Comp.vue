@@ -1,12 +1,16 @@
 <template compiler="vugel">
+    <rect color="0xff00ffff" w="2000" h="2000" @click="log1">
+        <rect color="0xff008000" w="1000" h="1000" @click="log2" @mousemove="log2"> </rect>
+    </rect>
     <node :scale="prop">
-        <rect v-for="(item, index) in images"
+        <rect
+            v-for="(item, index) in images"
             :x="item.x"
             :w="item.w"
             :y="index * 40"
             :h="20"
             :color="0xff00ffff"
-            @click="log"
+            @click="log1"
         ></rect>
     </node>
 </template>
@@ -26,8 +30,10 @@ export default {
         ]);
         return {
             images,
-            log: (e: Event) => {
-                console.log(e);
+            log1: (e: Event) => console.log(1, e),
+            log2: (e: Event) => {
+                e.cancelBubble = false;
+                console.log(2, e);
             },
         };
     },
