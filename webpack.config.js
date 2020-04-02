@@ -11,6 +11,7 @@ module.exports = (env = {}) => ({
         publicPath: "/dist/",
     },
     resolve: {
+        extensions: [".ts", ".tsx", ".js"],
         alias: {
             // See https://medium.com/@penx/managing-dependencies-in-a-node-package-so-that-they-are-compatible-with-npm-link-61befa5aaca7
             vue: path.resolve("./node_modules/vue"),
@@ -25,7 +26,7 @@ module.exports = (env = {}) => ({
                     loader: "vue-loader",
                     options: {
                         templateCompilers: {
-                            vugel: { compiler: require("vugel"), compilerOptions: {} },
+                            vugel: { compiler: require("vugel/lib"), compilerOptions: {} },
                         },
                     },
                 },
