@@ -1,12 +1,12 @@
 <template>
     <h1>Hello Vugel!</h1>
-    <vugel style="position: absolute; width: 100%; height: 100%;">
+    <vugel style="position: absolute; width: 100%; height: 100%;" @click="click">
         <comp :prop="scale" />
     </vugel>
 </template>
 
 <script lang="ts">
-import { Vugel } from "vugel";
+import { Vugel } from "vugel/lib";
 import Comp from "./Comp.vue";
 import { ref } from "vue";
 
