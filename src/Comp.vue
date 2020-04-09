@@ -1,9 +1,9 @@
 <template compiler="vugel">
-    <rect color="0xff00ffff" w="2000" h="2000" @click="log1">
-        <rect color="0xff008000" w="1000" h="1000" @click="log2" @mousemove="log2"> </rect>
-    </rect>
-    <node :scale="prop">
-        <rect
+    <rectangle color="0xff00ffff" w="2000" h="2000">
+        <rectangle color="0xff008000" w="1000" h="1000" @mousedown="log2" @mouseup="log2" @mousemove="log2"> </rectangle>
+    </rectangle>
+    <container :scale="prop">
+        <rectangle
             v-for="(item, index) in images"
             :x="item.x"
             :w="item.w"
@@ -11,12 +11,13 @@
             :h="20"
             :color="0xff00ffff"
             @click="log1"
-        ></rect>
-    </node>
+        ></rectangle>
+    </container>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
+import { VugelMouseEvent } from "vugel";
 
 export default {
     props: {
@@ -30,8 +31,8 @@ export default {
         ]);
         return {
             images,
-            log1: (e: Event) => console.log(1, e),
-            log2: (e: Event) => {
+            log1: (e: VugelMouseEvent) => console.log(1, e),
+            log2: (e: VugelMouseEvent) => {
                 e.cancelBubble = false;
                 console.log(2, e);
             },

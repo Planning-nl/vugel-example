@@ -9,6 +9,8 @@ module.exports = (env = {}) => ({
     output: {
         path: path.resolve(__dirname, "./dist"),
         publicPath: "/dist/",
+        // See https://github.com/webpack/webpack/issues/6522
+        globalObject: "typeof self !== 'undefined' ? self : this",
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
