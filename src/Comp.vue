@@ -1,42 +1,57 @@
 <template compiler="vugel">
-    <rectangle color="0xff00ffff" w="2000" h="2000">
-        <rectangle color="0xff008000" w="1000" h="1000" @mousedown="log2" @mouseup="log2" @mousemove="log2"> </rectangle>
-    </rectangle>
-    <container :scale="prop">
+    <rectangle
+        ref="a"
+        color="0xff00ffff"
+        w="1000"
+        h="1000"
+        @mouseout="log1"
+        @mouseleave="log1"
+        @mouseover="log1"
+        @mouseenter="log1"
+        @mousedown="log1"
+        @mouseup="log1"
+    >
         <rectangle
-            v-for="(item, index) in images"
-            :x="item.x"
-            :w="item.w"
-            :y="index * 40"
-            :h="20"
-            :color="0xff00ffff"
-            @click="log1"
-        ></rectangle>
-    </container>
+            ref="b"
+            color="0xff008000"
+            w="500"
+            h="500"
+            @mouseout="log2"
+            @mouseleave="log2"
+            @mouseover="log2"
+            @mouseenter="log2"
+            @mousedown="log2"
+            @mouseup="log2"
+        >
+        </rectangle>
+    </rectangle>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
-import { VugelMouseEvent } from "vugel";
+import { ref, defineComponent, Ref } from "vue";
+import { VugelMouseEvent, Rectangle } from "vugel";
 
-export default {
+export default defineComponent({
     props: {
         prop: { type: Number, default: 1 },
     },
-    setup: (props: any) => {
+    setup: (props, context) => {
         const images = ref([
             { x: 0, w: 400 },
             { x: 0, w: 800 },
             { x: 0, w: 400 },
         ]);
+
+        const a: Ref<Rectangle | null> = ref(null);
+        const b: Ref<Rectangle | null> = ref(null);
+
         return {
+            a,
+            b,
             images,
-            log1: (e: VugelMouseEvent) => console.log(1, e),
-            log2: (e: VugelMouseEvent) => {
-                e.cancelBubble = false;
-                console.log(2, e);
-            },
+            log1: (e: VugelMouseEvent) => console.log(3, e.type, a.value?.el.color === e.target?.el.color, e),
+            log2: (e: VugelMouseEvent) => console.log(4, e.type, b.value?.el.color === e.target?.el.color, e),
         };
     },
-};
+});
 </script>
