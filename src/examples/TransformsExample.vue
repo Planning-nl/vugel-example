@@ -1,47 +1,54 @@
 <template compiler="vugel">
-    <container>
-        <picture :scale-x="scalex" :x="x" :y="y" src="./assets/logo.png" :pivot="0" />
-
-        <drag-bar :w="500" :x="10" :y="100" :formatter="formatscalex" @change="changescalex" />
-        <drag-bar :w="500" :x="10" :y="300" :formatter="formatx" @change="changex" />
-        <drag-bar :w="500" :x="10" :y="400" :formatter="formaty" @change="changey" />
-    </container>
+    <editor>
+        <template v-slot:content>
+            <picture
+                src="./assets/rotterdam.jpg"
+                :scale-x="scalex"
+                :scale-y="scaley"
+                :pivot-x="pivotx"
+                :pivot-y="pivoty"
+                :x="x"
+                :y="y"
+                :rotation="rotation"
+            />
+        </template>
+        <template v-slot:form-items>
+            <item name="x">
+                <drag-bar :max="800" suffix="px" @change="set_x" />
+            </item>
+            <item name="y">
+                <drag-bar :max="800" suffix="px" @change="set_y" />
+            </item>
+            <item name="scalex">
+                <drag-bar :initial-value="1" :max="4" @change="set_scalex" />
+            </item>
+            <item name="scaley">
+                <drag-bar :initial-value="1" :max="4" @change="set_scaley" />
+            </item>
+            <item name="pivotx">
+                <drag-bar :initial-value="0.5" @change="set_pivotx" />
+            </item>
+            <item name="pivoty">
+                <drag-bar :initial-value="0.5" @change="set_pivoty" />
+            </item>
+            <item name="rotation">
+                <drag-bar :max="2 * Math.PI" suffix="rad" @change="set_rotation" />
+            </item>
+        </template>
+    </editor>
 </template>
 
 <script lang="ts">
-import { ref, Ref } from "vue";
-import DragBar from "./DragBar.vue";
+import Editor from "./form/Editor.vue";
+import FormItem from "./form/FormItem.vue";
+import DragBar from "./form/DragBar.vue";
+import { createChangeHandlers } from "./form/utils";
 
 export default {
-    components: { DragBar },
+    components: { Editor, item: FormItem, DragBar },
     setup() {
-        const getValueFormatter = (min: number = 0, max: number = 1, suffix: string = "", digits: number = 2) => {
-            return (v: number) => {
-                return (min + (max - min) * v).toFixed(digits) + suffix;
-            };
-        };
-
-        const getValueChanger = (ref: Ref<number>, min: number = 0, max: number = 1) => {
-            return (e: { value: number }) => {
-                ref.value = min + (max - min) * e.value;
-            };
-        };
-
-        const buildProp = (
-            name: string,
-            config: { initial?: number; min?: number; max?: number; suffix?: string; digits?: number },
-        ) => {
-            const obj: any = {};
-            obj[name] = ref(config.initial || 0);
-            obj[`format${name}`] = getValueFormatter(config.min, config.max, config.suffix);
-            obj[`change${name}`] = getValueChanger(obj[name], config.min, config.max);
-            return obj;
-        };
-
         return {
-            ...buildProp("x", { min: 0, max: 1000, suffix: "px" }),
-            ...buildProp("y", { min: 0, max: 400, suffix: "px" }),
-            ...buildProp("scalex", { max: 4 }),
+            ...createChangeHandlers(["x", "y", "scalex", "scaley", "pivotx", "pivoty", "rotation"]),
         };
     },
 };

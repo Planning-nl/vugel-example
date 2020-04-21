@@ -1,14 +1,14 @@
 <template>
     <h1>Vugel examples</h1>
 
-    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; height: 500px;">
-        <div style="flex-shrink: 0; margin-bottom: 20px; margin-right: 20px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; height: 90%;">
+        <div style="flex-shrink: 0; margin: 10px;">
             <div v-for="e in examples">
                 <input :id="e.name" v-model="example" type="radio" :value="e.name" />
                 <label :for="e.name">{{ e.text }}</label>
             </div>
         </div>
-        <vugel style="flex-basis: 500px; flex-grow: 1; min-width: 500px; min-height: 500px; align-self: stretch; position: relative;">
+        <vugel :settings="{clearColor: 0xff000000}" style="flex-basis: 500px; flex-grow: 1; min-width: 500px; min-height: 700px; align-self: stretch; position: relative; margin: 10px;">
             <!-- notice that you must always use a single component tag (without v-if) here! -->
             <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
             <examples :selected="example" />
@@ -25,23 +25,26 @@ export default {
     components: { Vugel, Examples },
     setup() {
         const examples = ref([
-            { name: "basic-tags", text: "Basic tags" },
+            { name: "picture", text: "Picture" },
+            { name: "rectangle", text: "Rectangle" },
             { name: "text", text: "Text" },
-            { name: "position", text: "Position" },
+            { name: "styled-rectangle", text: "Styled rectangle" },
+            { name: "drawing", text: "Drawing" },
+            { name: "position", text: "Position and size" },
+            { name: "center", text: "Center" },
             { name: "transforms", text: "Transforms" },
             { name: "visibility", text: "Visibility" },
+            { name: "tinting", text: "Tinting" },
             { name: "clipping", text: "Clipping" },
             { name: "z-index", text: "Z-index" },
             { name: "flexbox", text: "Flexbox" },
-            { name: "styled-rectangle", text: "Styled rectangle" },
-            { name: "drawing", text: "Drawing" },
             { name: "effects", text: "Effects" },
-            { name: "intersection", text: "Intersection" },
+            { name: "paragraph", text: "Paragraph" },
             { name: "mouse-events", text: "Mouse events" },
             { name: "focus-events", text: "Focus events" },
-            { name: "pixel-ratio", text: "Pixel ratio" },
+            { name: "intersection", text: "Intersection" },
         ]);
-        const example: Ref<string> = ref("transforms");
+        const example: Ref<string> = ref("styled-rectangle");
         const check = (exampleName: string) => {
             return example.value === exampleName;
         };

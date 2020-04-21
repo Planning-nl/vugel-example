@@ -1,18 +1,41 @@
 <template compiler="vugel">
-    <rectangle w="w" h="h" :color="0xff000000" @mousedown="start" @mousemove="move" @mouseup="end" @mouseleave="end">
-        <rectangle :x="100" :y="100" :w="300" :h="300" :color="0xffffffff" :clipping="clipping">
-            <picture ref="dragTarget" src="./assets/logo.png" :x="-10" :y="100" />
-        </rectangle>
-        <text :x="100" :y="420" :color="0xffffffff" :font-size="14">drag and drop the logo to test clipping</text>
-        <text :x="100" :y="440" :color="0xffffffff" :font-size="14" @click="changeClipping">clipping: {{ clipping }} (click to toggle)</text>
-    </rectangle>
+    <editor>
+        <template v-slot:content>
+            <rectangle
+                w="w"
+                h="h"
+                :color="0xff000000"
+                @mousedown="start"
+                @mousemove="move"
+                @mouseup="end"
+                @mouseleave="end"
+            >
+                <rectangle :x="100" :y="100" :w="300" :h="300" :color="0xffffffff" :clipping="clipping">
+                    <picture ref="dragTarget" src="./assets/rotterdam.jpg" :x="-100" :y="-100" />
+                </rectangle>
+                <text :x="100" :y="420" :color="0xffffffff" :font-size="14"
+                    >drag and drop the logo to test clipping</text
+                >
+            </rectangle>
+        </template>
+        <template v-slot:form-items>
+            <item name="clipping">
+                <toggle :initial-value="true" @change="set_clipping" />
+            </item>
+        </template>
+    </editor>
 </template>
 
 <script lang="ts">
 import { ref, Ref } from "vue";
 import { VugelMouseEvent, Node } from "vugel";
+import Editor from "./form/Editor.vue";
+import { createChangeHandlers } from "./form/utils";
+import Toggle from "./form/Toggle.vue";
+import FormItem from "./form/FormItem.vue";
 
 export default {
+    components: { Editor, Toggle, item: FormItem },
     setup() {
         const dragTarget: Ref<Node | null> = ref(null);
 
@@ -42,16 +65,12 @@ export default {
             startEvent = null;
         };
 
-        const clipping = ref(true);
         return {
             start,
             move,
             end,
             dragTarget,
-            clipping,
-            changeClipping: () => {
-                clipping.value = !clipping.value;
-            },
+            ...createChangeHandlers(["clipping"]),
         };
     },
 };

@@ -1,14 +1,43 @@
 <template compiler="vugel">
-    <!--full width/height using relative functions -->
-    <rectangle w="w" h="h" :color="0xff000000">
-        <!-- calc functions for width and height -->
-        <rectangle :x="10" :y="10" w="w-20" h="h-20" :color-left="0xffff0000" :color-right="0xff0000ff" />
-
-        <!-- use mount to position an element relative to its size (can be used for centering with unknown width) -->
-        <picture src="./assets/logo.png" x="w/2" y="h/2" mount-x="0.5" mount-y="0.5"></picture>
-    </rectangle>
+    <editor>
+        <template v-slot:content>
+            <picture src="./assets/rotterdam.jpg" :mount-x="mountx" :mount-y="mounty" :x="x" :y="y" :w="w" :h="h" />
+        </template>
+        <template v-slot:form-items>
+            <item name="x">
+                <drag-bar :max="800" suffix="px" @change="set_x" />
+            </item>
+            <item name="y">
+                <drag-bar :max="800" suffix="px" @change="set_y" />
+            </item>
+            <item name="w">
+                <drag-bar :max="800" suffix="px" @change="set_w" />
+            </item>
+            <item name="h">
+                <drag-bar :max="800" suffix="px" @change="set_h" />
+            </item>
+            <item name="mount-x">
+                <drag-bar suffix="px" @change="set_mountx" />
+            </item>
+            <item name="mount-y">
+                <drag-bar suffix="px" @change="set_mounty" />
+            </item>
+        </template>
+    </editor>
 </template>
 
 <script lang="ts">
-export default {};
+import DragBar from "./form/DragBar.vue";
+import Editor from "./form/Editor.vue";
+import FormItem from "./form/FormItem.vue";
+import { createChangeHandlers } from "./form/utils";
+
+export default {
+    components: { DragBar, Editor, item: FormItem },
+    setup() {
+        return {
+            ...createChangeHandlers(["x", "y", "mountx", "mounty", "w", "h"]),
+        };
+    },
+};
 </script>

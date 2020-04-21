@@ -1,42 +1,35 @@
 <template compiler="vugel">
-    <container>
-        <!-- create a wrapper that listen to clicks, even when the text is invisible -->
-        <text
-            :color="0xff000000"
-            :font-size="30"
-            :font-weight="900"
-            font-style="italic"
-            font-face="Serif"
-            :visible="currentVisible"
-        >
-            hello world
-        </text>
-        <text :color="0xff000000" :font-size="14" :y="40" @click="changeVisible">click here to toggle visibility</text>
-
-        <picture src="./assets/logo.png" :alpha="currentAlpha" :y="100" @mousemove="changeAlpha" />
-        <text :color="0xff000000" :font-size="14" :y="200">mouse mouse from left to right over the picture to change alpha</text>
-    </container>
+    <editor>
+        <template v-slot:content>
+            <container>
+                <picture src="./assets/rotterdam.jpg" :alpha="alpha" :visible="visible" />
+            </container>
+        </template>
+        <template v-slot:form-items>
+            <item name="visible">
+                <toggle :initial-value="true" @change="set_visible" />
+            </item>
+            <item name="alpha">
+                <drag-bar :initial-value="1" @change="set_alpha" />
+            </item>
+        </template>
+    </editor>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
-import { VugelMouseEvent } from "vugel";
+import DragBar from "./form/DragBar.vue";
+import Editor from "./form/Editor.vue";
+import FormItem from "./form/FormItem.vue";
+import { createChangeHandlers } from "./form/utils";
+import Toggle from "./form/Toggle.vue";
 
 export default {
+    components: { DragBar, Toggle, Editor, item: FormItem },
     setup() {
-        const currentVisible = ref(true);
-        const currentAlpha = ref(1);
         return {
-            currentVisible,
-            currentAlpha,
-            changeVisible: () => {
-                currentVisible.value = !currentVisible.value;
-            },
-            changeAlpha: (e: VugelMouseEvent) => {
-                const amount = e.elementOffsetX / e.target!.el.renderWidth;
-                currentAlpha.value = amount;
-            },
+            ...createChangeHandlers(["alpha", "visible"]),
         };
     },
 };
+
 </script>
