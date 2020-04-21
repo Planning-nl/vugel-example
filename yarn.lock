@@ -4704,9 +4704,9 @@ vue-eslint-parser@^7.0.0:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
-"vue-loader@git+ssh://git@github.com:Planning-nl/vue-loader.git#feat/multiple-compilers-build":
+"vue-loader@git+https://github.com/Planning-nl/vue-loader.git#feat/multiple-compilers-build":
   version "16.0.0-alpha.3"
-  resolved "git+ssh://git@github.com:Planning-nl/vue-loader.git#c13912d080edf7885964dbae3501c162b9a7cc52"
+  resolved "git+https://github.com/Planning-nl/vue-loader.git#c13912d080edf7885964dbae3501c162b9a7cc52"
   dependencies:
     chalk "^3.0.0"
     hash-sum "^2.0.0"
