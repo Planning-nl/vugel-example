@@ -1,6 +1,6 @@
 <template compiler="vugel">
     <!--full width/height using relative functions -->
-    <rectangle w="w" h="h" :color="0xff000000">
+    <rectangle w="w" h="500" :color="0xff000000">
         <!-- calc functions for width and height -->
         <rectangle w="w" h="h" :color-left="0xffff0000" :color-right="0xff0000ff" />
 

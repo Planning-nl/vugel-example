@@ -36,13 +36,14 @@ export default {
             { name: "visibility", text: "Visibility" },
             { name: "tinting", text: "Tinting" },
             { name: "clipping", text: "Clipping" },
-            { name: "z-index", text: "Z-index" },
-            { name: "flexbox", text: "Flexbox" },
-            { name: "effects", text: "Effects" },
+            // { name: "texture-clipping", text: "Texture clipping" },
+            // { name: "z-index", text: "Z-index" },
+            // { name: "flexbox", text: "Flexbox" },
+            // { name: "effects", text: "Effects" },
             { name: "paragraph", text: "Paragraph" },
-            { name: "mouse-events", text: "Mouse events" },
-            { name: "focus-events", text: "Focus events" },
-            { name: "intersection", text: "Intersection" },
+            // { name: "mouse-events", text: "Mouse events" },
+            // { name: "focus-events", text: "Focus events" },
+            // { name: "intersection", text: "Intersection" },
         ]);
         const example: Ref<string> = ref("styled-rectangle");
         const check = (exampleName: string) => {

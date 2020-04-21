@@ -4,6 +4,7 @@
         <rectangle-example v-if="check('rectangle')" />
         <text-example v-if="check('text')" />
         <styled-rectangle-example v-if="check('styled-rectangle')" />
+        <drawing-example v-if="check('drawing')" />
 
         <position-example v-if="check('position')" />
         <center-example v-if="check('center')" />
@@ -30,6 +31,7 @@ import RectangleExample from "./examples/RectangleExample.vue";
 import StyledRectangleExample from "./examples/StyledRectangleExample.vue";
 import TintingExample from "./examples/TintingExample.vue";
 import ParagraphExample from "./examples/ParagraphExample.vue";
+import DrawingExample from "./examples/DrawingExample.vue";
 
 export default {
     components: {
@@ -37,6 +39,7 @@ export default {
         RectangleExample,
         TextExample,
         StyledRectangleExample,
+        DrawingExample,
 
         PositionExample,
         CenterExample,
