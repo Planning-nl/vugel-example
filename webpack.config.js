@@ -30,7 +30,7 @@ module.exports = (env = {}) => ({
                     loader: "vue-loader",
                     options: {
                         templateCompilers: {
-                            vugel: { compiler: require("vugel/lib"), compilerOptions: {} },
+                            vugel: { compiler: require("vugel"), compilerOptions: {} },
                         },
                     },
                 },
