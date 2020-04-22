@@ -34,7 +34,7 @@
 <script lang="ts">
 import DragBar from "./DragBar.vue";
 import { ref, watch, computed, SetupContext } from "vue";
-import ColorUtils from "tree2d/lib/tree/ColorUtils";
+import { ColorUtils } from "tree2d";
 
 export default {
     components: { DragBar },
