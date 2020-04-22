@@ -1,32 +1,33 @@
 <template>
     <div>
-        <h1 style="font-family: sans-serif; margin-bottom: 0.25em;">Vugel examples</h1>
-        <a
-            href="https://github.com/Planning-nl/vugel-example"
-            style="font-family: sans-serif; text-decoration: none; color: blue;"
-            target="_blank"
-            >View source code</a
+        <div
+            style="
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                min-height: 750px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            "
         >
-
-        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; height: 90%;">
-            <div style="flex-shrink: 0; margin: 10px;">
-                <div v-for="e in examples">
-                    <input :id="e.name" v-model="example" type="radio" :value="e.name" />
-                    <label :for="e.name" style="font-family: sans-serif;">{{ e.text }}</label>
-                </div>
+            <div style="display: flex; align-items: center; background: #ffffff; padding: 10px;">
+                <p style="font-family: sans-serif; margin: 0;">
+                    <em>Vugel example</em> (
+                    <a
+                        href="https://github.com/Planning-nl/vugel-example"
+                        target="_blank"
+                        >View source code on Github</a
+                    >
+                    )
+                </p>
+                <select v-model="example" style="margin-left: 50px;">
+                    <option v-for="e in examples" :value="e.name">
+                        {{ e.text }}
+                    </option>
+                </select>
             </div>
-            <vugel
-                :settings="{ clearColor: 0xff000000 }"
-                style="
-                    flex-basis: 500px;
-                    flex-grow: 1;
-                    min-width: 500px;
-                    min-height: 700px;
-                    align-self: stretch;
-                    position: relative;
-                    margin: 10px;
-                "
-            >
+            <vugel :settings="{ clearColor: 0xff000000 }" style="flex-grow: 1; position: relative;">
                 <!-- notice that you must always use a single component tag (without v-if) here! -->
                 <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
                 <examples :selected="example" />

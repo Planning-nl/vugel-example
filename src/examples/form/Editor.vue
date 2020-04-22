@@ -1,6 +1,6 @@
 <template compiler="vugel">
     <container w="w" :flex="true" flex-align-items="flex-start">
-        <container :flex-grow="1" :w="400" :min-height="400">
+        <container :flex-grow="1" :w="400" :min-height="750">
             <slot name="content"></slot>
         </container>
 

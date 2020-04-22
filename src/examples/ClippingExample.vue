@@ -4,7 +4,7 @@
             <rectangle
                 w="w"
                 h="h"
-                :color="0xff000000"
+                :color="0xff00ff00"
                 @mousedown="start"
                 @mousemove="move"
                 @mouseup="end"
@@ -13,7 +13,7 @@
                 <rectangle :x="100" :y="100" :w="300" :h="300" :color="0xffffffff" :clipping="clipping">
                     <picture ref="dragTarget" src="./assets/rotterdam.jpg" :x="-100" :y="-100" />
                 </rectangle>
-                <text :x="100" :y="420" :color="0xffffffff" :font-size="14"
+                <text :x="100" :y="420" :color="0xffffffff" :font-size="14" :pointer-events="false"
                     >drag and drop the logo to test clipping</text
                 >
             </rectangle>
@@ -58,6 +58,9 @@ export default {
                 const deltaY = e.canvasOffsetY - startEvent.canvasOffsetY;
                 dragTarget.value!.x = startX + deltaX;
                 dragTarget.value!.y = startY + deltaY;
+
+                // Do not scroll on mobile.
+                e.originalEvent.preventDefault();
             }
         };
 
