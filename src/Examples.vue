@@ -18,13 +18,11 @@
 </template>
 
 <script lang="ts">
-import BasicTagsExample from "./examples/BasicTagsExample.vue";
 import TextExample from "./examples/TextExample.vue";
 import PositionExample from "./examples/PositionExample.vue";
 import TransformsExample from "./examples/TransformsExample.vue";
 import ClippingExample from "./examples/ClippingExample.vue";
 import VisibilityExample from "./examples/VisibilityExample.vue";
-import { ref, Ref, computed } from "vue";
 import CenterExample from "./examples/CenterExample.vue";
 import PictureExample from "./examples/PictureExample.vue";
 import RectangleExample from "./examples/RectangleExample.vue";

@@ -6,6 +6,7 @@ install:
 script:
     - yarn build
     - cp index.html dist/ # TODO remove when vue-cli-plugin-vue-next has ts support, this is very hacky
+    - cp assets/ dist/ -r # TODO remove when vue-cli-plugin-vue-next has ts support, this is very hacky
     - sed -i 's/dist\/main.js/main.js/g' dist/index.html # TODO remove when vue-cli-plugin-vue-next has ts support, this is very hacky
     - echo 'vugel-example.planning.nl' > dist/CNAME
 deploy:
