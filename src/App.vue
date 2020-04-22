@@ -8,7 +8,18 @@
                 <label :for="e.name">{{ e.text }}</label>
             </div>
         </div>
-        <vugel :settings="{clearColor: 0xff000000}" style="flex-basis: 500px; flex-grow: 1; min-width: 500px; min-height: 700px; align-self: stretch; position: relative; margin: 10px;">
+        <vugel
+            :settings="{ clearColor: 0xff000000 }"
+            style="
+                flex-basis: 500px;
+                flex-grow: 1;
+                min-width: 500px;
+                min-height: 700px;
+                align-self: stretch;
+                position: relative;
+                margin: 10px;
+            "
+        >
             <!-- notice that you must always use a single component tag (without v-if) here! -->
             <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
             <examples :selected="example" />
@@ -17,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { Vugel } from "vugel/lib";
+import { Vugel } from "vugel";
 import Examples from "./Examples.vue";
 import { ref, Ref, computed } from "vue";
 

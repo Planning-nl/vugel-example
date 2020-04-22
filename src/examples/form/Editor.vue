@@ -16,7 +16,7 @@ import { VugelMouseEvent, Node } from "vugel";
 
 export default {
     props: {
-        description: {type: String, default: ""}
-    }
+        description: { type: String, default: "" },
+    },
 };
 </script>

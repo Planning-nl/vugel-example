@@ -71,7 +71,12 @@ export default {
         alpha.value = components[3];
 
         watch([red, green, blue, alpha], (values: number[]) => {
-            const color = ColorUtils.getArgbNumber([red.value * 255, green.value * 255, blue.value * 255, alpha.value * 255]);
+            const color = ColorUtils.getArgbNumber([
+                red.value * 255,
+                green.value * 255,
+                blue.value * 255,
+                alpha.value * 255,
+            ]);
             context.emit("change", { value: color });
         });
 

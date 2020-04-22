@@ -10,7 +10,7 @@ export default {
         suffix: { type: String, default: "" },
         digits: { type: Number, default: 2 },
         background: { type: Number, default: 0xffddddff },
-        foreground: { type: Number, default: 0xff000000 }
+        foreground: { type: Number, default: 0xff000000 },
     },
     setup(props: any, context: SetupContext) {
         const bar: Ref<Node | null> = ref(null);

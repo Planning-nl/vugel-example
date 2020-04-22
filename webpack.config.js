@@ -1,3 +1,5 @@
+// TODO remove when vue-cli-plugin-vue-next has ts support
+
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");

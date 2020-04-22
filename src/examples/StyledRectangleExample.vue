@@ -10,7 +10,15 @@ export default {
     components: { ColorDragBar, DragBar, Toggle, Editor, item: FormItem },
     setup() {
         return {
-            ...createChangeHandlers(["radius", "fill", "fillColor", "strokeWidth", "strokeColor", "shadowBlur", "shadowColor"]),
+            ...createChangeHandlers([
+                "radius",
+                "fill",
+                "fillColor",
+                "strokeWidth",
+                "strokeColor",
+                "shadowBlur",
+                "shadowColor",
+            ]),
         };
     },
 };
