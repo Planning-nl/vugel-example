@@ -1,22 +1,14 @@
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <rectangle
-                w="w"
-                h="h"
-                :color="0xff00ff00"
-                @mousedown="start"
-                @mousemove="move"
-                @mouseup="end"
-                @mouseleave="end"
-            >
+            <container w="w" h="h" @mousedown="start" @mousemove="move" @mouseup="end" @mouseleave="end">
                 <rectangle :x="100" :y="100" :w="300" :h="300" :color="0xffffffff" :clipping="clipping">
                     <picture ref="dragTarget" src="./assets/rotterdam.jpg" :x="-100" :y="-100" />
                 </rectangle>
                 <text :x="100" :y="420" :color="0xffffffff" :font-size="14" :pointer-events="false"
                     >drag and drop the logo to test clipping</text
                 >
-            </rectangle>
+            </container>
         </template>
         <template v-slot:form-items>
             <item name="clipping">

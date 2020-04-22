@@ -1,6 +1,6 @@
 <script lang="ts">
 import { ref, watch, Ref } from "vue";
-import { DrawingFunctionOptions } from "tree2d/lib/textures/DrawingTexture";
+import { DrawingFunctionOptions } from "tree2d";
 import DragBar from "./form/DragBar.vue";
 import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
