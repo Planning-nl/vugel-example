@@ -29,7 +29,7 @@ export default {
         };
 
         const update = (e: VugelMouseEvent) => {
-            const localCoords = bar.value!.el.core.convertWorldCoordsToLocal(e.canvasOffsetX, e.canvasOffsetY);
+            const localCoords = bar.value!.getLocalOffset(e.canvasOffsetX, e.canvasOffsetY);
             const max = bar.value!.el.renderWidth;
             const v = Math.min(max, Math.max(0, localCoords[0]));
             value.value = v / max;
