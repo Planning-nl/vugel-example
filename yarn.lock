@@ -37,10 +37,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@planning.nl/eslint-config@^1.0.3":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@planning.nl/eslint-config/-/eslint-config-1.0.5.tgz#45566fff968a9e2c003128631e5857350a91272e"
-  integrity sha512-UKnK5aSQEmSaloLZUJKRNLWvvJmAmiXOccRWscIvSLfnpRqS3+n5bTJ9tIRKdOaA4qh1wNcUgp6ZSGgbwOf67w==
+"@planning.nl/eslint-config@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@planning.nl/eslint-config/-/eslint-config-1.0.6.tgz#da60c6efef9ce1eb005c5c5bfaf4d00d2f8211a4"
+  integrity sha512-JwHUTuGBKrhzi+SkTmGrpMJ9bSx7PK2bqJ/7EAgu04xBeCBCzQU9RwRGff9tKFErYLBzYATWIt2LevDIomheQQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.25.0"
     "@typescript-eslint/parser" "^2.25.0"
@@ -150,7 +150,7 @@
     "@vue/compiler-core" "3.0.0-beta.3"
     "@vue/shared" "3.0.0-beta.3"
 
-"@vue/compiler-sfc@^3.0.0-beta.1":
+"@vue/compiler-sfc@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.0.0-beta.3.tgz#c3d2d0a7fa606b246bb875a5fa6f7b19a03d0b09"
   integrity sha512-R8gfZX5fm43dig/cKf0jOKOIhKXIZibf4ycF+yjbNGzHfA2lgVbBGOp/4dYxe9l7ajCBqGTgHkAHwXTeorKKYA==
@@ -1899,10 +1899,10 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
-flexbox.js@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/flexbox.js/-/flexbox.js-1.0.11.tgz#c4c9e49d775069fd0c2060e4c4f0644c0f02aedd"
-  integrity sha512-jMHs7tkq38oZrPDfMdIBnTcYwG4DzJv8ruNFXOoFOm7SCabyaUKvz5lA7Wv4ZAmh53ZdXSrMXI3ud4l3tP+xSA==
+flexbox.js@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/flexbox.js/-/flexbox.js-1.0.13.tgz#efbae438f4ad496f551616408b23bc8010ec3ef2"
+  integrity sha512-MUzb+P/brIfCHw+iIRNgOvPhk/+iryXIwPgj8ZRfktspxd3CMx2R+4Vsm2ezr7oloBa0HQXP9mvnR/OWnuLM4w==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -4488,12 +4488,12 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
-tree2d@^1.0.2:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tree2d/-/tree2d-1.0.4.tgz#e4da784173c524048f0cca32855e4ede0c8e11be"
-  integrity sha512-EnEtdcH8GIm3BVCH91TMI6uy0NilovYcLOAlel/8rLV89LXmvStCLx9wK0y+7kYesETTFZlfAsu+3ks6SysZWw==
+tree2d@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tree2d/-/tree2d-1.0.6.tgz#125b7419d8f1331091cf8bd8e2f2cc1e72b58d9c"
+  integrity sha512-grqvhySFCyhaaNlyCf71pH2TykTlA5VrbEy3mfHs/U2BLm70TBVoOE/QX2UBpcsLSr/Sk8QJsaGvG4UDJ4wP6A==
   dependencies:
-    flexbox.js "^1.0.11"
+    flexbox.js "^1.0.13"
 
 ts-loader@^6.2.2:
   version "6.2.2"
@@ -4718,7 +4718,7 @@ vue-eslint-parser@^7.0.0:
     merge-source-map "^1.1.0"
     source-map "^0.6.1"
 
-vue@^3.0.0-beta.1:
+vue@^3.0.0-beta.3:
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.0-beta.3.tgz#c81e3fa9b414e9129ff1dcd13fbf4f7d3ec3bbdf"
   integrity sha512-5DBah04o/0MNVLFg8BwB5cP3prU6HA/vxXVcUT7E+uvwY6EiJsRKtyZ71m294bKV5ZZkYzzJjLtZrjYGR2tW7g==
@@ -4727,12 +4727,12 @@ vue@^3.0.0-beta.1:
     "@vue/runtime-dom" "3.0.0-beta.3"
     "@vue/shared" "3.0.0-beta.3"
 
-vugel@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.6.tgz#681d2574c8e5f85e6ea1f45cb26220e6fb3d3420"
-  integrity sha512-N0vgzy6++M0m+tTkxPpbqivVUoRuHUiBTWc1PyrnHpvmTxKN1a3lH05DyRsPkg/LWEVeshc64q2LIGRsHDQxGw==
+vugel@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.8.tgz#000f0e80bdfc3da0027990d20fee8ed5006a73d8"
+  integrity sha512-F7AbPSnWPXmdEUGu8uygj+atMX+B/Ntmpika+JuVtzNDAKf4hM+DltzDKoznVRZcFJdxZP0Pda73sW48Scy2Xw==
   dependencies:
-    tree2d "^1.0.2"
+    tree2d "^1.0.6"
 
 watchpack@^1.6.1:
   version "1.6.1"
