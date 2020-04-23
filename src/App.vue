@@ -14,9 +14,7 @@
             <div style="display: flex; align-items: center; background: #ffffff; padding: 10px;">
                 <p style="font-family: sans-serif; margin: 0;">
                     <em>Vugel example</em> (
-                    <a
-                        href="https://github.com/Planning-nl/vugel-example"
-                        target="_blank"
+                    <a href="https://github.com/Planning-nl/vugel-example" target="_blank"
                         >View source code on Github</a
                     >
                     )
@@ -27,7 +25,7 @@
                     </option>
                 </select>
             </div>
-            <vugel :settings="{ clearColor: 0xff000000 }" style="flex-grow: 1; position: relative;">
+            <vugel :settings="{ clearColor: '#000000' }" style="flex-grow: 1; position: relative;">
                 <!-- notice that you must always use a single component tag (without v-if) here! -->
                 <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
                 <examples :selected="example" />
