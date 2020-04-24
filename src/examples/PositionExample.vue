@@ -1,7 +1,7 @@
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <picture src="./assets/rotterdam.jpg" :mount-x="mountx" :mount-y="mounty" func-x="x" func-y="y" func-w="w" func-h="h" />
+            <picture src="./assets/rotterdam.jpg" :mount-x="mountx" :mount-y="mounty" :x="x" :y="y" :w="w" :h="h" />
         </template>
         <template v-slot:form-items>
             <item name="x">

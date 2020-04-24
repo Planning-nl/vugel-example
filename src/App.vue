@@ -65,7 +65,7 @@ export default {
             { name: "particles", text: "Particles" },
             { name: "particles-custom", text: "Particles (custom)" },
         ]);
-        const example: Ref<string> = ref("particles");
+        const example: Ref<string> = ref("picture");
         const check = (exampleName: string) => {
             return example.value === exampleName;
         };

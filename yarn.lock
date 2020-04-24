@@ -1899,10 +1899,10 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
-flexbox.js@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/flexbox.js/-/flexbox.js-1.0.13.tgz#efbae438f4ad496f551616408b23bc8010ec3ef2"
-  integrity sha512-MUzb+P/brIfCHw+iIRNgOvPhk/+iryXIwPgj8ZRfktspxd3CMx2R+4Vsm2ezr7oloBa0HQXP9mvnR/OWnuLM4w==
+flexbox.js@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/flexbox.js/-/flexbox.js-1.0.14.tgz#17f2c2e9dbe45c1dec38a3a03b3f1398faa30a94"
+  integrity sha512-Axir47iqlnkBaKHIxEr4qYyo9MoUMKgBNu2dvX5h8UQ8tVVGHMbQChNoFx9g9fbd+yxhtaP5Z+xNqxPpFbRKqg==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -4488,12 +4488,12 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
-tree2d@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/tree2d/-/tree2d-1.0.6.tgz#125b7419d8f1331091cf8bd8e2f2cc1e72b58d9c"
-  integrity sha512-grqvhySFCyhaaNlyCf71pH2TykTlA5VrbEy3mfHs/U2BLm70TBVoOE/QX2UBpcsLSr/Sk8QJsaGvG4UDJ4wP6A==
+tree2d@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/tree2d/-/tree2d-1.0.7.tgz#b1d5e31c0468c69dd3b9df20d7d6254205628ae8"
+  integrity sha512-NXqXRajpbFgM3plHcijcdmCRjNZFISTKnM8oZKqsW1wq17T80dBA5ytFkR7l2SXByM+pSQrAlRAh4hPY9ffNAw==
   dependencies:
-    flexbox.js "^1.0.13"
+    flexbox.js "^1.0.14"
 
 ts-loader@^6.2.2:
   version "6.2.2"
@@ -4727,12 +4727,12 @@ vue@^3.0.0-beta.3:
     "@vue/runtime-dom" "3.0.0-beta.3"
     "@vue/shared" "3.0.0-beta.3"
 
-vugel@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.8.tgz#000f0e80bdfc3da0027990d20fee8ed5006a73d8"
-  integrity sha512-F7AbPSnWPXmdEUGu8uygj+atMX+B/Ntmpika+JuVtzNDAKf4hM+DltzDKoznVRZcFJdxZP0Pda73sW48Scy2Xw==
+vugel@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/vugel/-/vugel-1.0.9.tgz#c7f86e77b01a9a1427ccdd86a04733f24bbc14e3"
+  integrity sha512-YZw08XxeEGJ5H0Iarxk65FDq9vf6KOuJKQobm6m6SpSRUuq4Hy9dwZHROdeiKknZNZa8yneS3Ib/UwfsSitAEQ==
   dependencies:
-    tree2d "^1.0.6"
+    tree2d "^1.0.7"
 
 watchpack@^1.6.1:
   version "1.6.1"

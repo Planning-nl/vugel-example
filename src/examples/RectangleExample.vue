@@ -1,5 +1,5 @@
 <template compiler="vugel">
-    <rectangle :h="400" :x="10" :y="10" func-w="w-20" :color="rgb(0, 255, 0)" />
+    <rectangle :h="400" :x="10" :y="10" func-w="w-20" color="rgb(0, 255, 0)" />
 </template>
 
 <script lang="ts">

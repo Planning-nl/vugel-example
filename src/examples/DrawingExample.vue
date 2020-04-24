@@ -48,7 +48,7 @@ export default {
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <drawing ref="drawing" func-w="w" func-h="h" @draw="draw" />
+            <drawing ref="drawing" :w="w" :h="h" @draw="draw" />
         </template>
         <template v-slot:form-items>
             <item name="w">
