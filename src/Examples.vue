@@ -1,5 +1,5 @@
 <template compiler="vugel">
-    <container w="w" h="h">
+    <container func-w="w" func-h="h">
         <picture-example v-if="check('picture')" />
         <rectangle-example v-if="check('rectangle')" />
         <text-example v-if="check('text')" />
@@ -14,6 +14,9 @@
         <clipping-example v-if="check('clipping')" />
 
         <paragraph-example v-if="check('paragraph')" />
+
+        <particles-example v-if="check('particles')" />
+        <particles-custom-example v-if="check('particles-custom')" />
     </container>
 </template>
 
@@ -30,6 +33,8 @@ import StyledRectangleExample from "./examples/StyledRectangleExample.vue";
 import TintingExample from "./examples/TintingExample.vue";
 import ParagraphExample from "./examples/ParagraphExample.vue";
 import DrawingExample from "./examples/DrawingExample.vue";
+import ParticlesExample from "./examples/ParticlesExample.vue";
+import ParticlesCustomExample from "./examples/ParticlesCustomExample.vue";
 
 export default {
     components: {
@@ -47,6 +52,8 @@ export default {
         ClippingExample,
 
         ParagraphExample,
+        ParticlesExample,
+        ParticlesCustomExample,
     },
     props: {
         selected: { type: String, default: "" },

@@ -62,8 +62,10 @@ export default {
             // { name: "mouse-events", text: "Mouse events" },
             // { name: "focus-events", text: "Focus events" },
             // { name: "intersection", text: "Intersection" },
+            { name: "particles", text: "Particles" },
+            { name: "particles-custom", text: "Particles (custom)" },
         ]);
-        const example: Ref<string> = ref("styled-rectangle");
+        const example: Ref<string> = ref("particles");
         const check = (exampleName: string) => {
             return example.value === exampleName;
         };

@@ -2,10 +2,10 @@
     <editor>
         <template v-slot:content>
             <rectangle
-                h="100"
+                :h="100"
                 :x="20"
                 :y="20"
-                w="w-40"
+                func-w="w-40"
                 :color-left="colorLeft"
                 :color-right="colorRight"
                 :margin-bottom="20"

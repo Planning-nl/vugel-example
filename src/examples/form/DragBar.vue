@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, Ref, watch, SetupContext, computed } from "vue";
+import { ref, shallowRef, Ref, watch, SetupContext, computed } from "vue";
 import { VugelMouseEvent, Node } from "vugel";
 
 export default {
@@ -13,8 +13,8 @@ export default {
         foreground: { type: Number, default: 0xff000000 },
     },
     setup(props: any, context: SetupContext) {
-        const bar: Ref<Node | null> = ref(null);
-        const dragTarget: Ref<Node | null> = ref(null);
+        const bar: Ref<Node | null> = shallowRef(null);
+        const dragTarget: Ref<Node | null> = shallowRef(null);
 
         const value = ref(-1);
 
@@ -92,8 +92,8 @@ export default {
     <container :h="20" :flex-grow="1" :min-width="80" :flex="true">
         <container
             :flex-item="false"
-            w="w"
-            h="h"
+            func-w="w"
+            func-h="h"
             :scale="containerScale"
             :z-index="containerScale"
             @mousedown="start"
@@ -111,7 +111,7 @@ export default {
             :pointer-events="false"
             @resize="updateValue"
         >
-            <text x="w/2" y="h/2+1" :mount="0.5" font-face="monospace" :font-size="14" :color="foreground">
+            <text func-x="w/2" func-y="h/2+1" :mount="0.5" font-face="monospace" :font-size="14" :color="foreground">
                 {{ formattedValue }}
             </text>
             <container ref="dragTarget">

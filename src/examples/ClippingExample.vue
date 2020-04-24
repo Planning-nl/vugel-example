@@ -1,7 +1,7 @@
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <container w="w" h="h" @mousedown="start" @mousemove="move" @mouseup="end" @mouseleave="end">
+            <container func-w="w" func-h="h" @mousedown="start" @mousemove="move" @mouseup="end" @mouseleave="end">
                 <rectangle :x="100" :y="100" :w="300" :h="300" :color="0xffffffff" :clipping="clipping">
                     <picture ref="dragTarget" src="./assets/rotterdam.jpg" :x="-100" :y="-100" />
                 </rectangle>
