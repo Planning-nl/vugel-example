@@ -18,10 +18,6 @@ export default {
     setup() {
         const amount = ref(0);
         const items: Ref<Item[]> = ref([]);
-        watch(amount, (n: number) => {
-            if (container.value) {
-            }
-        });
 
         const container: Ref<Container | null> = shallowRef(null);
 
@@ -30,7 +26,7 @@ export default {
                 const ctr = container.value!.el;
                 const n = Math.floor(amount.value);
                 if (ctr.children.length !== n) {
-                    const newItems = [];
+                    ctr.childList.clear();
                     for (let i = 0; i < n; i++) {
                         const element = new Element(ctr.stage);
                         element.ref = "" + i;
@@ -46,10 +42,8 @@ export default {
                         element.texture = ctr.stage.rectangleTexture;
                         element.x = Math.random() * 500;
                         element.y = Math.random() * 500;
-                        newItems.push(element);
+                        ctr.childList.add(element);
                     }
-
-                    ctr.childList.setItems(newItems);
                 }
 
                 const children = ctr.children;
@@ -80,8 +74,7 @@ export default {
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <container ref="container">
-            </container>
+            <container ref="container"></container>
         </template>
         <template v-slot:form-items>
             <item name="amount">
