@@ -4,7 +4,7 @@ import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
 import { ref, watch, Ref, shallowRef } from "vue";
 import { ColorUtils, Element } from "tree2d";
-import { Container, Node } from "vugel";
+import {Container, Node, Rectangle} from "vugel";
 
 class Item {
     id: number = 0;
@@ -21,35 +21,43 @@ export default {
 
         const container: Ref<Container | null> = shallowRef(null);
 
+        const reusedRectangles: Rectangle[] = [];
+
         const loop = () => {
             if (container.value) {
-                const ctr = container.value!.el;
+                if (!reusedRectangles.length) {
+                    for (let i = 0; i < 50000; i++) {
+                        const rectangle = new Rectangle(container.value!.stage);
+                        reusedRectangles.push(rectangle);
+                    }
+                }
+
+                const ctr = container.value!;
+
                 const n = Math.floor(amount.value);
-                if (ctr.children.length !== n) {
-                    ctr.childList.clear();
+                if (ctr.getChildren().length !== n) {
+                    ctr.clearChildren();
                     for (let i = 0; i < n; i++) {
-                        const element = new Element(ctr.stage);
-                        element.ref = "" + i;
-                        element.color = ColorUtils.getArgbNumber([
+                        const rectangle = reusedRectangles[i];
+                        rectangle.color = ColorUtils.getArgbNumber([
                             Math.random() * 255,
                             Math.random() * 255,
                             Math.random() * 255,
                             255,
                         ]);
-                        element.w = 10;
-                        element.h = 10;
-                        element.mount = 0.5;
-                        element.texture = ctr.stage.rectangleTexture;
-                        element.x = Math.random() * 500;
-                        element.y = Math.random() * 500;
-                        ctr.childList.add(element);
+                        rectangle.w = 10;
+                        rectangle.h = 10;
+                        rectangle.mount = 0.5;
+                        rectangle.x = Math.random() * 1000;
+                        rectangle.y = Math.random() * 1000;
+                        ctr.appendChild(rectangle);
                     }
                 }
 
-                const children = ctr.children;
-                children.forEach((child: Element) => {
+                const children = ctr.getChildren() as Node[];
+                children.forEach((child: Node) => {
                     if (child) {
-                        child.x = (child.x as number) + 0.1;
+                        child.x = (child.el.x as number) + 0.1;
                     }
                 });
             }
