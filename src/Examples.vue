@@ -16,7 +16,6 @@
         <paragraph-example v-if="check('paragraph')" />
 
         <particles-example v-if="check('particles')" />
-        <particles-custom-example v-if="check('particles-custom')" />
     </container>
 </template>
 
@@ -34,7 +33,6 @@ import TintingExample from "./examples/TintingExample.vue";
 import ParagraphExample from "./examples/ParagraphExample.vue";
 import DrawingExample from "./examples/DrawingExample.vue";
 import ParticlesExample from "./examples/ParticlesExample.vue";
-import ParticlesCustomExample from "./examples/ParticlesCustomExample.vue";
 
 export default {
     components: {
@@ -53,7 +51,6 @@ export default {
 
         ParagraphExample,
         ParticlesExample,
-        ParticlesCustomExample,
     },
     props: {
         selected: { type: String, default: "" },

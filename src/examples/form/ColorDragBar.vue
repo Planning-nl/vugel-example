@@ -1,36 +1,3 @@
-<template compiler="vugel">
-    <container :flex="true" :flex-grow="1" flex-direction="column">
-        <drag-bar
-            :initial-value="red"
-            :margin-bottom="10"
-            :background="redBackground"
-            :foreground="0xffffffff"
-            @change="updateRed"
-        />
-        <drag-bar
-            :initial-value="green"
-            :margin-bottom="10"
-            :background="greenBackground"
-            :foreground="0xffffffff"
-            @change="updateGreen"
-        />
-        <drag-bar
-            :initial-value="blue"
-            :margin-bottom="10"
-            :background="blueBackground"
-            :foreground="0xffffffff"
-            @change="updateBlue"
-        />
-        <drag-bar
-            :margin-bottom="10"
-            :initial-value="alpha"
-            :background="alphaBackground"
-            :foreground="alphaForeground"
-            @change="updateAlpha"
-        />
-    </container>
-</template>
-
 <script lang="ts">
 import DragBar from "./DragBar.vue";
 import { ref, watch, computed, SetupContext } from "vue";
@@ -63,12 +30,7 @@ export default {
             alpha.value = v.value;
         };
 
-        const components = ColorUtils.getRgbaComponentsNormalized(props.initialValue);
-
-        red.value = components[0];
-        green.value = components[1];
-        blue.value = components[2];
-        alpha.value = components[3];
+        const initialComponents = ColorUtils.getRgbaComponentsNormalized(props.initialValue);
 
         watch([red, green, blue, alpha], (values: number[]) => {
             const color = ColorUtils.getArgbNumber([
@@ -105,6 +67,7 @@ export default {
             green,
             blue,
             alpha,
+            initialComponents,
             updateRed,
             updateGreen,
             updateBlue,
@@ -118,3 +81,36 @@ export default {
     },
 };
 </script>
+
+<template compiler="vugel">
+    <container :flex="true" :flex-grow="1" flex-direction="column">
+        <drag-bar
+            :initial-value="initialComponents[0]"
+            :margin-bottom="10"
+            :background="redBackground"
+            :foreground="0xffffffff"
+            @change="updateRed"
+        />
+        <drag-bar
+            :initial-value="initialComponents[1]"
+            :margin-bottom="10"
+            :background="greenBackground"
+            :foreground="0xffffffff"
+            @change="updateGreen"
+        />
+        <drag-bar
+            :initial-value="initialComponents[2]"
+            :margin-bottom="10"
+            :background="blueBackground"
+            :foreground="0xffffffff"
+            @change="updateBlue"
+        />
+        <drag-bar
+            :margin-bottom="10"
+            :initial-value="initialComponents[3]"
+            :background="alphaBackground"
+            :foreground="alphaForeground"
+            @change="updateAlpha"
+        />
+    </container>
+</template>
