@@ -5,6 +5,7 @@ import FormItem from "./form/FormItem.vue";
 import { ref, watch, Ref, onMounted, shallowRef } from "vue";
 import { ColorUtils } from "tree2d";
 import { Container, VugelMouseEvent } from "vugel";
+import Toggle from "./form/Toggle.vue";
 
 class Item {
     id: number = 0;
@@ -16,7 +17,7 @@ class Item {
 }
 
 export default {
-    components: { DragBar, Editor, item: FormItem },
+    components: { DragBar, Toggle, Editor, item: FormItem },
     setup() {
         const amount = ref(0);
         const items: Ref<Item[]> = shallowRef([]);
@@ -27,6 +28,27 @@ export default {
             const n = Math.floor(amount.value);
 
             if (container.value) {
+                const objs = items.value;
+                objs.forEach((obj: Item) => {
+                    const dx = pos.value[0] - obj.x;
+                    const dy = pos.value[1] - obj.y;
+                    const dist2 = 0.1 * (dx * dx + dy * dy) + 100;
+
+                    obj.vx = 0.995 * obj.vx + dx / dist2;
+                    obj.vy = 0.995 * obj.vy + dy / dist2;
+
+                    obj.x += obj.vx;
+                    obj.y += obj.vy;
+                });
+
+                if (custom.value) {
+                    update();
+                } else {
+                    // Force reactivity.
+                    items.value = [];
+                    items.value = objs;
+                }
+
                 if (container.value?.getChildren().length !== n) {
                     const newItems = [];
                     const rw = container.value!.el.renderWidth;
@@ -48,29 +70,26 @@ export default {
                     }
                     items.value = newItems;
                 }
-
-                const objs = items.value;
-                objs.forEach((obj: Item) => {
-                    const dx = pos.value[0] - obj.x;
-                    const dy = pos.value[1] - obj.y;
-                    const dist2 = 0.1 * (dx * dx + dy * dy) + 100;
-
-                    obj.vx = 0.995 * obj.vx + dx / dist2;
-                    obj.vy = 0.995 * obj.vy + dy / dist2;
-
-                    obj.x += obj.vx;
-                    obj.y += obj.vy;
-                });
-
-                items.value = [];
-                items.value = objs;
             }
             requestAnimationFrame(loop);
+        };
+
+        const update = () => {
+            const ctr = container.value;
+            if (ctr) {
+                const children = ctr.getChildren();
+                const objs = items.value;
+                children.forEach((child, index) => {
+                    child.x = objs[index].x;
+                    child.y = objs[index].y;
+                });
+            }
         };
 
         loop();
 
         const pos: Ref<number[]> = shallowRef([0, 0]);
+        const custom = ref(false);
 
         return {
             mousemove(e: VugelMouseEvent) {
@@ -80,6 +99,9 @@ export default {
             },
             changeAmount(e: { value: number }) {
                 amount.value = e.value;
+            },
+            changeCustom(e: { value: boolean }) {
+                custom.value = e.value;
             },
             amount,
             items,
@@ -108,6 +130,9 @@ export default {
         <template v-slot:form-items>
             <item name="amount">
                 <drag-bar :initial-value="1000" :max="20000" @change="changeAmount" />
+            </item>
+            <item name="direct updates">
+                <toggle :initial-value="false" @change="changeCustom" />
             </item>
         </template>
     </editor>
