@@ -4,6 +4,7 @@ import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
 import { ref, watch, Ref, onMounted, shallowRef } from "vue";
 import { ColorUtils } from "tree2d";
+import { Container } from "vugel";
 
 class Item {
     id: number = 0;
@@ -17,28 +18,33 @@ export default {
     setup() {
         const amount = ref(0);
         const items: Ref<Item[]> = shallowRef([]);
-        watch(amount, (n: number) => {
-            const newItems = [];
-            for (let i = 0; i < n; i++) {
-                const item = new Item();
-                item.id = i;
-                item.x = Math.random() * 500;
-                item.y = Math.random() * 500;
-                item.color = ColorUtils.getArgbNumber([
-                    Math.random() * 255,
-                    Math.random() * 255,
-                    Math.random() * 255,
-                    255,
-                ]);
-                newItems.push(item);
-            }
-            items.value = newItems;
-        });
+
+        const container: Ref<Container | null> = shallowRef(null);
 
         const loop = () => {
+            const n = amount.value;
+
+            if (container.value?.getChildren().length !== n) {
+                const newItems = [];
+                for (let i = 0; i < n; i++) {
+                    const item = new Item();
+                    item.id = Math.random();
+                    item.x = Math.random() * 500;
+                    item.y = Math.random() * 500;
+                    item.color = ColorUtils.getArgbNumber([
+                        Math.random() * 255,
+                        Math.random() * 255,
+                        Math.random() * 255,
+                        255,
+                    ]);
+                    newItems.push(item);
+                }
+                items.value = newItems;
+            }
+
             const objs = items.value;
             objs.forEach((obj: Item) => {
-                obj.x += 0.1;
+                //obj.x += 0.1;
             });
 
             items.value = items.value;
@@ -53,6 +59,7 @@ export default {
             },
             amount,
             items,
+            container,
         };
     },
 };
@@ -61,16 +68,18 @@ export default {
 <template compiler="vugel">
     <editor>
         <template v-slot:content>
-            <rectangle
-                v-for="item in items"
-                :key="item.id"
-                :x="item.x"
-                :y="item.y"
-                :w="10"
-                :h="10"
-                :mount="0.5"
-                :color="item.color"
-            />
+            <container ref="container">
+                <rectangle
+                    v-for="item in items"
+                    :key="item.id"
+                    :x="item.x"
+                    :y="item.y"
+                    :w="10"
+                    :h="10"
+                    :mount="0.5"
+                    :color="item.color"
+                />
+            </container>
         </template>
         <template v-slot:form-items>
             <item name="amount">

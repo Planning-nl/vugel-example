@@ -57,7 +57,7 @@ export default {
                 const children = ctr.getChildren() as Node[];
                 children.forEach((child: Node) => {
                     if (child) {
-                        child.x = (child.el.x as number) + 0.1;
+                        //child.x = (child.el.x as number) + 0.1;
                     }
                 });
             }

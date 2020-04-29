@@ -25,6 +25,7 @@
                     </option>
                 </select>
             </div>
+            <particles-example-html style="display: block; width: 100%; height: 1000px;" v-if="check('particles-html')"></particles-example-html>
             <vugel :settings="{ clearColor: '#000000' }" style="flex-grow: 1; position: relative;">
                 <!-- notice that you must always use a single component tag (without v-if) here! -->
                 <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
@@ -38,9 +39,10 @@
 import { Vugel } from "vugel";
 import Examples from "./Examples.vue";
 import { ref, Ref, computed } from "vue";
+import ParticlesExampleHtml from "./examples/ParticlesExampleHtml.vue";
 
 export default {
-    components: { Vugel, Examples },
+    components: { Vugel, Examples, ParticlesExampleHtml },
     setup() {
         const examples = ref([
             { name: "picture", text: "Picture" },
@@ -64,6 +66,7 @@ export default {
             // { name: "intersection", text: "Intersection" },
             { name: "particles", text: "Particles" },
             { name: "particles-custom", text: "Particles (custom)" },
+            { name: "particles-html", text: "Particles (html)" },
         ]);
         const example: Ref<string> = ref("picture");
         const check = (exampleName: string) => {
