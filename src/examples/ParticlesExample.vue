@@ -3,9 +3,10 @@ import DragBar from "./form/DragBar.vue";
 import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
 import { ref, watch, Ref, onMounted, shallowRef } from "vue";
-import { ColorUtils } from "tree2d";
+import { ColorUtils, RoundRectTexture } from "tree2d";
 import { Container, VugelMouseEvent } from "vugel";
 import Toggle from "./form/Toggle.vue";
+import { Node } from "vugel";
 
 class Item {
     id: number = 0;
@@ -91,6 +92,16 @@ export default {
         const pos: Ref<number[]> = shallowRef([0, 0]);
         const custom = ref(false);
 
+        const texture: Ref<RoundRectTexture | undefined> = shallowRef(undefined);
+        const textureNode: Ref<Node | undefined> = shallowRef(undefined);
+        watch(container, (node) => {
+            if (node) {
+                const tx = new RoundRectTexture(node.stage);
+                tx.options = { w: 10, h: 10, radius: [5, 5, 5, 5], shadowBlur: 2, shadowColor: 0xffffffff };
+                texture.value = tx;
+            }
+        });
+
         return {
             mousemove(e: VugelMouseEvent) {
                 const offset = e.currentTarget!.getLocalOffset(e.canvasOffsetX, e.canvasOffsetY);
@@ -106,6 +117,8 @@ export default {
             amount,
             items,
             container,
+            textureNode,
+            texture,
         };
     },
 };
@@ -115,13 +128,12 @@ export default {
     <editor>
         <template v-slot:content>
             <container ref="container" func-w="w" func-h="h" @mousemove="mousemove">
-                <rectangle
+                <texture
                     v-for="item in items"
+                    :texture = "texture"
                     :key="item.id"
                     :x="item.x"
                     :y="item.y"
-                    :w="10"
-                    :h="10"
                     :mount="0.5"
                     :color="item.color"
                 />

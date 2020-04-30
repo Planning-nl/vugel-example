@@ -25,6 +25,7 @@
                     </option>
                 </select>
             </div>
+
             <vugel :settings="{ clearColor: '#000000' }" style="flex-grow: 1; position: relative;">
                 <!-- notice that you must always use a single component tag (without v-if) here! -->
                 <!-- otherwise you'll run into trouble as we are mixin compilers at this level -->
@@ -38,7 +39,6 @@
 import { Vugel } from "vugel";
 import Examples from "./Examples.vue";
 import { ref, Ref, computed } from "vue";
-import ParticlesExampleHtml from "./examples/ParticlesExampleHtml.vue";
 
 export default {
     components: { Vugel, Examples },
@@ -64,6 +64,7 @@ export default {
             // { name: "focus-events", text: "Focus events" },
             // { name: "intersection", text: "Intersection" },
             { name: "particles", text: "Particles" },
+            { name: "teleport", text: "Teleport" },
         ]);
         const example: Ref<string> = ref("picture");
         const check = (exampleName: string) => {

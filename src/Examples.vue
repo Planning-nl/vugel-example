@@ -1,21 +1,25 @@
 <template compiler="vugel">
     <container func-w="w" func-h="h">
-        <picture-example v-if="check('picture')" />
-        <rectangle-example v-if="check('rectangle')" />
-        <text-example v-if="check('text')" />
-        <styled-rectangle-example v-if="check('styled-rectangle')" />
-        <drawing-example v-if="check('drawing')" />
+        <container :skip-in-layout="true">
+            <picture-example v-if="check('picture')" />
+            <rectangle-example v-if="check('rectangle')" />
+            <text-example v-if="check('text')" />
+            <styled-rectangle-example v-if="check('styled-rectangle')" />
+            <drawing-example v-if="check('drawing')" />
 
-        <position-example v-if="check('position')" />
-        <center-example v-if="check('center')" />
-        <transforms-example v-if="check('transforms')" />
-        <visibility-example v-if="check('visibility')" />
-        <tinting-example v-if="check('tinting')" />
-        <clipping-example v-if="check('clipping')" />
+            <position-example v-if="check('position')" />
+            <center-example v-if="check('center')" />
+            <transforms-example v-if="check('transforms')" />
+            <visibility-example v-if="check('visibility')" />
+            <tinting-example v-if="check('tinting')" />
+            <clipping-example v-if="check('clipping')" />
 
-        <paragraph-example v-if="check('paragraph')" />
+            <paragraph-example v-if="check('paragraph')" />
 
-        <particles-example v-if="check('particles')" />
+            <particles-example v-if="check('particles')" />
+            <teleport-example v-if="check('teleport')" />
+        </container>
+        <container id="teleport" />
     </container>
 </template>
 
@@ -33,6 +37,7 @@ import TintingExample from "./examples/TintingExample.vue";
 import ParagraphExample from "./examples/ParagraphExample.vue";
 import DrawingExample from "./examples/DrawingExample.vue";
 import ParticlesExample from "./examples/ParticlesExample.vue";
+import TeleportExample from "./examples/TeleportExample.vue";
 
 export default {
     components: {
@@ -51,6 +56,7 @@ export default {
 
         ParagraphExample,
         ParticlesExample,
+        TeleportExample
     },
     props: {
         selected: { type: String, default: "" },
