@@ -65,6 +65,7 @@ export default {
             // { name: "intersection", text: "Intersection" },
             { name: "particles", text: "Particles" },
             { name: "teleport", text: "Teleport" },
+            { name: "direct", text: "Direct" },
         ]);
         const example: Ref<string> = ref("picture");
         const check = (exampleName: string) => {

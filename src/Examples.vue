@@ -18,6 +18,8 @@
 
             <particles-example v-if="check('particles')" />
             <teleport-example v-if="check('teleport')" />
+
+            <direct-example v-if="check('direct')" />
         </container>
         <container id="teleport" />
     </container>
@@ -38,6 +40,7 @@ import ParagraphExample from "./examples/ParagraphExample.vue";
 import DrawingExample from "./examples/DrawingExample.vue";
 import ParticlesExample from "./examples/ParticlesExample.vue";
 import TeleportExample from "./examples/TeleportExample.vue";
+import DirectExample from "./examples/DirectExample.vue";
 
 export default {
     components: {
@@ -56,7 +59,8 @@ export default {
 
         ParagraphExample,
         ParticlesExample,
-        TeleportExample
+        TeleportExample,
+        DirectExample,
     },
     props: {
         selected: { type: String, default: "" },
