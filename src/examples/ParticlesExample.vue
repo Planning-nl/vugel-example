@@ -3,7 +3,7 @@ import DragBar from "./form/DragBar.vue";
 import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
 import { ref, watch, Ref, onMounted, shallowRef } from "vue";
-import { ColorUtils, RoundRectTexture, Stage } from "tree2d";
+import { ColorUtils, RoundRectTexture, Stage, Texture } from "tree2d";
 import { Container, VugelMouseEvent } from "vugel";
 import Toggle from "./form/Toggle.vue";
 import { Node } from "vugel";
@@ -95,6 +95,8 @@ export default {
         const texture: Ref<RoundRectTexture | undefined> = shallowRef(undefined);
         const textureNode: Ref<Node | undefined> = shallowRef(undefined);
 
+        let circleTexture: Texture | undefined = undefined;
+
         return {
             mousemove(e: VugelMouseEvent) {
                 const offset = e.currentTarget!.getLocalOffset(e.canvasOffsetX, e.canvasOffsetY);
@@ -113,10 +115,12 @@ export default {
             textureNode,
             texture,
             createCircle(stage: Stage) {
-                const tx = new RoundRectTexture(stage);
-                tx.options = { w: 10, h: 10, radius: [5, 5, 5, 5], shadowBlur: 2, shadowColor: 0xffffffff };
-                texture.value = tx;
-                return { texture: tx, reusable: true };
+                if (!circleTexture) {
+                    const tx = new RoundRectTexture(stage);
+                    tx.options = { w: 10, h: 10, radius: [5, 5, 5, 5], shadowBlur: 2, shadowColor: 0xffffffff };
+                    circleTexture = tx;
+                }
+                return circleTexture;
             },
         };
     },
