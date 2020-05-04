@@ -1,7 +1,9 @@
 <template compiler="vugel">
     <teleport to="#teleport">
         <picture src="./assets/rotterdam.jpg">
-            <text :x="10" :y="10" :font-size="10">notice that Vue.teleport currently contains a bug, so it's not cleaned up properly.</text>
+            <rectangle :x="10" :y="10" :color="0xaa000000" :flex="true" :padding="10">
+                <text :font-size="16">This content is teleported! 🚀</text>
+            </rectangle>
         </picture>
     </teleport>
     <container>
