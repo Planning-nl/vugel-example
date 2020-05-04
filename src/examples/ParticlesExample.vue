@@ -23,7 +23,7 @@ export default {
         const amount = ref(0);
         const items: Ref<Item[]> = shallowRef([]);
 
-        const container: Ref<Container | null> = shallowRef(null);
+        const container: Ref<Container | null> = ref(null);
 
         const loop = () => {
             const n = Math.floor(amount.value);
