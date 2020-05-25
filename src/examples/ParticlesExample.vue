@@ -2,7 +2,7 @@
 import DragBar from "./form/DragBar.vue";
 import Editor from "./form/Editor.vue";
 import FormItem from "./form/FormItem.vue";
-import { ref, watch, Ref, onMounted, shallowRef } from "vue";
+import { ref, watch, Ref, onMounted, shallowRef, triggerRef } from "vue";
 import { ColorUtils, RoundRectTexture, Stage, Texture } from "tree2d";
 import { Container, VugelMouseEvent } from "vugel";
 import Toggle from "./form/Toggle.vue";
@@ -46,8 +46,7 @@ export default {
                     update();
                 } else {
                     // Force reactivity.
-                    items.value = [];
-                    items.value = objs;
+                    triggerRef(items);
                 }
 
                 if (container.value?.getChildren().length !== n) {
