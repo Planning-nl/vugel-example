@@ -22,6 +22,9 @@ module.exports = (env = {}) => ({
             "@vue": path.resolve("./node_modules/@vue"),
         },
     },
+    optimization: {
+        usedExports: false /* We do this, because otherwise the build will be much slower than the development build for some reason */,
+    },
     module: {
         rules: [
             {
