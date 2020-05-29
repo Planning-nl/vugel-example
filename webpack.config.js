@@ -23,6 +23,7 @@ module.exports = (env = {}) => ({
         },
     },
     optimization: {
+        minimize: false,
         usedExports: false /* We do this, because otherwise the build will be much slower than the development build for some reason */,
     },
     module: {
