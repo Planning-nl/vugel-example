@@ -19,7 +19,7 @@
                     >
                     )
                 </p>
-                <select v-model="example" style="margin-left: 50px;">
+                <select v-model="example" style="margin-left: 50px;" @click="myvar = 1" @mousedown="myobj.x = 1">
                     <option v-for="e in examples" :value="e.name">
                         {{ e.text }}
                     </option>
@@ -38,7 +38,7 @@
 <script lang="ts">
 import { Vugel } from "vugel";
 import Examples from "./Examples.vue";
-import { ref, Ref, computed } from "vue";
+import { ref, Ref, computed, reactive } from "vue";
 
 export default {
     components: { Vugel, Examples },
@@ -66,6 +66,7 @@ export default {
             { name: "particles", text: "Particles" },
             { name: "teleport", text: "Teleport" },
             { name: "direct", text: "Direct" },
+            { name: "many-components", text: "Many components performance" },
         ]);
         const example: Ref<string> = ref("picture");
         const check = (exampleName: string) => {
@@ -74,7 +75,9 @@ export default {
         const exampleObject = computed(
             () => examples.value.find((obj: any) => obj.name === example.value) || { name: "", text: "" },
         );
-        return { examples, example, check, exampleObject };
+        const myvar = ref(1);
+        const myobj = reactive({x: 0, y: 0});
+        return { examples, example, check, exampleObject, myvar, myobj };
     },
 };
 </script>

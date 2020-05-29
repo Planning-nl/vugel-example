@@ -25,7 +25,16 @@ export default {
 
         const container: Ref<Container | null> = ref(null);
 
+        let frames = 0;
         const loop = () => {
+            frames++;
+            if (frames === 100) {
+                console.profile("frame 100-300");
+            }
+            if (frames === 300) {
+                console.profileEnd("frame 100-300");
+            }
+
             const n = Math.floor(amount.value);
 
             if (container.value) {
@@ -143,7 +152,7 @@ export default {
         </template>
         <template v-slot:form-items>
             <item name="amount">
-                <drag-bar :initial-value="1000" :max="20000" @change="changeAmount" />
+                <drag-bar :initial-value="6000" :max="20000" @change="changeAmount" />
             </item>
             <item name="direct updates">
                 <toggle :initial-value="false" @change="changeCustom" />

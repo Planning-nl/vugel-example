@@ -20,6 +20,8 @@
             <teleport-example v-if="check('teleport')" />
 
             <direct-example v-if="check('direct')" />
+
+            <many-components v-if="check('many-components')" />
         </container>
         <container id="teleport" />
     </container>
@@ -41,6 +43,7 @@ import DrawingExample from "./examples/DrawingExample.vue";
 import ParticlesExample from "./examples/ParticlesExample.vue";
 import TeleportExample from "./examples/TeleportExample.vue";
 import DirectExample from "./examples/DirectExample.vue";
+import ManyComponents from "./examples/performance/ManyComponents.vue";
 
 export default {
     components: {
@@ -61,6 +64,8 @@ export default {
         ParticlesExample,
         TeleportExample,
         DirectExample,
+
+        ManyComponents,
     },
     props: {
         selected: { type: String, default: "" },
