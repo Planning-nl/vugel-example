@@ -75,7 +75,7 @@ export default {
                 console.log("start");
                 console.profile("[reuse] frame 400-600");
             }
-            if (frames === 1600) {
+            if (frames === 600) {
                 console.log("end");
                 console.profileEnd("[reuse] frame 400-600");
             }
