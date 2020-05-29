@@ -3,7 +3,13 @@
         <template v-slot:content>
             <container>
                 <rectangle :w="50" :h="100" color="red"></rectangle>
-                <stateful-component v-for="item in items" :key="item.id" :x="item.x" :y="item.y" :color="item.color"></stateful-component>
+                <stateful-component
+                    v-for="item in items"
+                    :key="item.id"
+                    :x="item.x"
+                    :y="item.y"
+                    :color="item.color"
+                ></stateful-component>
             </container>
         </template>
         <template v-slot:form-items>
@@ -63,15 +69,15 @@ export default {
             }
             if (frames === 300) {
                 console.profileEnd("[create] frame 100-300");
-                // changeHandlers.recreate.value = false;
+                changeHandlers.recreate.value = false;
             }
             if (frames === 400) {
-                console.log('start')
-                // console.profile("[reuse] frame 400-600");
+                console.log("start");
+                console.profile("[reuse] frame 400-600");
             }
             if (frames === 1600) {
-                console.log('end')
-                // console.profileEnd("[reuse] frame 400-600");
+                console.log("end");
+                console.profileEnd("[reuse] frame 400-600");
             }
 
             triggerRef(changeHandlers.amount);
