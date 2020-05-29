@@ -29585,16 +29585,16 @@ function DirectExamplevue_type_template_id_72ef8c46_compiler_vugel_render(_ctx, 
 DirectExamplevue_type_script_lang_ts.render = DirectExamplevue_type_template_id_72ef8c46_compiler_vugel_render
 
 /* harmony default export */ var DirectExample = (DirectExamplevue_type_script_lang_ts);
-// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ref--5!./node_modules/vue-loader/dist??ref--0!./src/examples/performance/ManyComponents.vue?vue&type=template&id=093dd818&compiler=vugel
+// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ref--5!./node_modules/vue-loader/dist??ref--0!./src/examples/performance/ManyComponents.vue?vue&type=template&id=7834d5cc&compiler=vugel
 
 
-const ManyComponentsvue_type_template_id_093dd818_compiler_vugel_hoisted_1 = /*#__PURE__*/Object(runtime_core_esm_bundler["createVNode"])("rectangle", {
+const ManyComponentsvue_type_template_id_7834d5cc_compiler_vugel_hoisted_1 = /*#__PURE__*/Object(runtime_core_esm_bundler["createVNode"])("rectangle", {
   w: 50,
   h: 100,
   color: "red"
 }, null, -1 /* HOISTED */)
 
-function ManyComponentsvue_type_template_id_093dd818_compiler_vugel_render(_ctx, _cache) {
+function ManyComponentsvue_type_template_id_7834d5cc_compiler_vugel_render(_ctx, _cache) {
   const _component_stateful_component = Object(runtime_core_esm_bundler["resolveComponent"])("stateful-component")
   const _component_toggle = Object(runtime_core_esm_bundler["resolveComponent"])("toggle")
   const _component_item = Object(runtime_core_esm_bundler["resolveComponent"])("item")
@@ -29604,7 +29604,7 @@ function ManyComponentsvue_type_template_id_093dd818_compiler_vugel_render(_ctx,
   return (Object(runtime_core_esm_bundler["openBlock"])(), Object(runtime_core_esm_bundler["createBlock"])(_component_editor, null, {
     content: Object(runtime_core_esm_bundler["withCtx"])(() => [
       Object(runtime_core_esm_bundler["createVNode"])("container", null, [
-        ManyComponentsvue_type_template_id_093dd818_compiler_vugel_hoisted_1,
+        ManyComponentsvue_type_template_id_7834d5cc_compiler_vugel_hoisted_1,
         (Object(runtime_core_esm_bundler["openBlock"])(true), Object(runtime_core_esm_bundler["createBlock"])(runtime_core_esm_bundler["Fragment"], null, Object(runtime_core_esm_bundler["renderList"])(_ctx.items, (item) => {
           return (Object(runtime_core_esm_bundler["openBlock"])(), Object(runtime_core_esm_bundler["createBlock"])(_component_stateful_component, {
             key: item.id,
@@ -29640,7 +29640,7 @@ function ManyComponentsvue_type_template_id_093dd818_compiler_vugel_render(_ctx,
     _: 1
   }))
 }
-// CONCATENATED MODULE: ./src/examples/performance/ManyComponents.vue?vue&type=template&id=093dd818&compiler=vugel
+// CONCATENATED MODULE: ./src/examples/performance/ManyComponents.vue?vue&type=template&id=7834d5cc&compiler=vugel
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ref--5!./node_modules/vue-loader/dist??ref--0!./src/examples/performance/StatefulComponent.vue?vue&type=template&id=37fa75c0&compiler=vugel
 
@@ -29725,15 +29725,15 @@ StatefulComponentvue_type_script_lang_ts.render = StatefulComponentvue_type_temp
             }
             if (frames === 300) {
                 console.profileEnd("[create] frame 100-300");
-                // changeHandlers.recreate.value = false;
+                changeHandlers.recreate.value = false;
             }
             if (frames === 400) {
-                console.log('start');
-                // console.profile("[reuse] frame 400-600");
+                console.log("start");
+                console.profile("[reuse] frame 400-600");
             }
             if (frames === 1600) {
-                console.log('end');
-                // console.profileEnd("[reuse] frame 400-600");
+                console.log("end");
+                console.profileEnd("[reuse] frame 400-600");
             }
             Object(reactivity_esm_bundler["triggerRef"])(changeHandlers.amount);
             raf = requestAnimationFrame(loop);
@@ -29754,7 +29754,7 @@ StatefulComponentvue_type_script_lang_ts.render = StatefulComponentvue_type_temp
 
 
 
-ManyComponentsvue_type_script_lang_ts.render = ManyComponentsvue_type_template_id_093dd818_compiler_vugel_render
+ManyComponentsvue_type_script_lang_ts.render = ManyComponentsvue_type_template_id_7834d5cc_compiler_vugel_render
 
 /* harmony default export */ var ManyComponents = (ManyComponentsvue_type_script_lang_ts);
 // CONCATENATED MODULE: ./node_modules/ts-loader??ref--1!./node_modules/vue-loader/dist??ref--0!./src/Examples.vue?vue&type=script&lang=ts
